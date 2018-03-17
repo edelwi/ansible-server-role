@@ -47,8 +47,3 @@
 - include_tasks: user.yml
   when: setup_user == True and use_user is defined
   tags: ['user']
-
-- import_tasks: ufw.yml
-  when: setup_ufw == True
-  tags: ['ufw']
-
