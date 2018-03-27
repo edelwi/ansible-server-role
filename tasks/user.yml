@@ -14,6 +14,7 @@
   with_file:
     - '{{drs_pub_key_file}}'
   when: drs_pub_key_file is defined and drs_pub_key_file != None
+  ignore_errors: yes
 
 - name: Adding to sudoers
   lineinfile: dest='/etc/sudoers' state='present' regexp='^{{drs_user}} ' line='{{drs_user}} ALL=(ALL:ALL) NOPASSWD:ALL'
