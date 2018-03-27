@@ -1,19 +1,20 @@
 - name: Creating user
   user:
-    name: '{{ use_user }}'
-    password: '{{ use_pass|default(omit) }}'
-    ssh_key_type: '.ssh/id_rsa'
+    name: '{{ drs_user }}'
+    password: '{{ drs_pass|default(omit) }}'
+#    ssh_key_type: '.ssh/id_rsa'
     groups: sudo
     shell: /bin/bash
 
 - name: Adding SSH keys
   authorized_key:
-    user: '{{ use_user }}'
+    user: '{{ drs_user }}'
     state: present
     key: '{{ item }}'
   with_file:
-    - '{{use_key_file}}'
-  when: use_key_file is defined and use_key_file != ''
+    - '{{drs_pub_key_file}}'
+  when: drs_pub_key_file is defined and drs_pub_key_file != None
 
 - name: Adding to sudoers
-  lineinfile: dest='/etc/sudoers' state='present' regexp='^{{use_user}} ' line='{{use_user}} ALL=(ALL:ALL) NOPASSWD:ALL'
+  lineinfile: dest='/etc/sudoers' state='present' regexp='^{{drs_user}} ' line='{{drs_user}} ALL=(ALL:ALL) NOPASSWD:ALL'
+

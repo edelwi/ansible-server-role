@@ -45,5 +45,15 @@
   tags: ['hostname']
 
 - include_tasks: user.yml
-  when: setup_user == True and use_user is defined
+  when: drs_setup_user is defined and drs_setup_user == True
   tags: ['user']
+
+- name: Creating data directory then set permissions
+  file:
+    path: '{{drs_data_dir}}'
+    state: directory
+    mode: 0755
+    recurse: yes
+    owner: '{{managing_user|default(omit)}}'
+  when: drs_data_dir is defined and drs_data_dir
+

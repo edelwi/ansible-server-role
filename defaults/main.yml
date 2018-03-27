@@ -1,7 +1,9 @@
 ---
-setup_user: true
-ipt_ipv6: true
 
-use_user: user
-use_pass:
-use_key_file: 'public_keys/{{use_user}}'
+drs_setup_user: true
+drs_user: user
+#drs_pass: 
+drs_pub_key_file: 'public_keys/id_rsa.pub'
+
+drs_data_dir:
+
