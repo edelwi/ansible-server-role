@@ -1,6 +1,7 @@
 ---
 - name: Dependencies
-  apt: name={{item}} state=present update_cache=yes
+  apt: name={{item}} state=present update_cache=yes install_recommends=no
+
   with_items:
     - git
     - sudo
