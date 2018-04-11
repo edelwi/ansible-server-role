@@ -15,6 +15,7 @@
     - openssl
     - tzdata
     - nano
+    - htop
 
 - name: Locale
   locale_gen:
