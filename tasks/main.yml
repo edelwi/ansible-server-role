@@ -50,12 +50,21 @@
   when: drs_setup_user is defined and drs_setup_user == True
   tags: ['user']
 
-- name: Creating data directory then set permissions
+- name: Add ssh agent line to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: SSH_AUTH_SOCK
+    line: Defaults env_keep += "SSH_AUTH_SOCK"
+  tags: ['become-agent']
+
+- name: Creating data directory with selected user as owner
   file:
     path: '{{drs_data_dir}}'
     state: directory
     mode: 0755
     recurse: yes
-    owner: '{{managing_user|default(omit)}}'
+    group: '{{drs_user}}'
+    owner: '{{drs_user}}'
   when: drs_data_dir is defined and drs_data_dir
 
