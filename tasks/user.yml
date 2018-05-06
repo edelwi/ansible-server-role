@@ -1,8 +1,14 @@
+- name: Creating user group
+  group:
+    name: '{{ drs_user }}'
+    state: present
+
 - name: Creating user
   user:
     name: '{{ drs_user }}'
     password: '{{ drs_pass|default(omit) }}'
 #    ssh_key_type: '.ssh/id_rsa'
+    group: '{{ drs_user }}'
     groups: sudo
     shell: /bin/bash
 
