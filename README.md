@@ -6,12 +6,13 @@ Add to ansible playbook following:
 
     - import_role:
         name: dr.server
+      vars:
         drs_setup_user: yes
         drs_user: '{{user}}'
         drs_pub_key_file: '{{def_user_key_file}}'
         drs_data_dir: '/srv/{{odl_front_service}}'
-        tags: ['os']
-        become: yes
+      tags: ['os']
+      become: yes
 
 params:
 
