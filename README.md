@@ -10,7 +10,7 @@ Add to ansible playbook following:
         drs_setup_user: yes
         drs_user: '{{user}}'
         drs_pub_key_file: '{{def_user_key_file}}'
-        drs_data_dir: '/srv/{{odl_front_service}}'
+        drs_data_dir: '/srv/{{data_dir}}'
       tags: ['os']
       become: yes
 
