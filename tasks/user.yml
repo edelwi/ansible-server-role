@@ -7,8 +7,8 @@
   user:
     name: '{{ drs_user }}'
     password: '{{ drs_pass|default(omit) }}'
-#    ssh_key_type: '.ssh/id_rsa'
     group: '{{ drs_user }}'
+    home: "{{drs_home_dir|default(omit)}}"
     groups: sudo
     shell: /bin/bash
 

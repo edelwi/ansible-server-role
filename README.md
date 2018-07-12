@@ -9,6 +9,7 @@ Add to ansible playbook following:
       vars:
         drs_setup_user: yes
         drs_user: '{{user}}'
+        drs_home_dir: /what/you/want/or/not/set/for/default
         drs_pub_key_file: '{{def_user_key_file}}'
         drs_data_dir: '/srv/{{data_dir}}'
       tags: ['os']

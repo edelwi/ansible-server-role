@@ -4,5 +4,7 @@ drs_setup_user: false
 drs_user: user
 #drs_pass: 
 drs_pub_key_file: 'public_keys/id_rsa.pub'
+# drs_home_dir: /home/drs
 # drs_data_dir:
 
+drs_disable_ipv6: false
