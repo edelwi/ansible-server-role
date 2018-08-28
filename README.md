@@ -22,6 +22,7 @@ params:
 - [**drs_pass:** (str)] new user passwords
 - [**def_user_key_file:**] (str) path to public key
 - [**drs_data_dir:**] (str) directory outside home that can be used by added user
+- [**drs_extra_hosts:**] ({host: addr}) dict host->ip that will be added to /etc/hosts
 
 ## Default parameters
 

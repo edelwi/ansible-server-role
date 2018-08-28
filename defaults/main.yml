@@ -8,3 +8,5 @@ drs_pub_key_file: 'public_keys/id_rsa.pub'
 # drs_data_dir:
 
 drs_disable_ipv6: false
+
+drs_extra_hosts: {}

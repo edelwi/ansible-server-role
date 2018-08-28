@@ -53,6 +53,14 @@
   lineinfile: dest=/etc/hosts regexp=".*#ansible_line$" line="127.0.0.1    {{ inventory_hostname_short|default(inventory_hostname) + ' '}}#ansible_line" state=present
   tags: ['hostname']
 
+- name: Add extra hosts to /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "{{item.key|replace('.', '\\.')}}.*#ansible_extra$"
+    line: "{{item.value}}    {{ item.key }} #ansible_extra"
+  with_dict: "{{drs_extra_hosts}}"
+  tags: ['extra_hosts']
+
 - name: Changing hostname to match inventory_hostname_short
   hostname:
     name: "{{ inventory_hostname_short|default(inventory_hostname) }}"
