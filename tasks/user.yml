@@ -1,6 +1,7 @@
 - name: Creating user group
   group:
     name: '{{ drs_user }}'
+    gid: "{{ drs_gid|default(omit) }}"
     state: present
 
 - name: Creating user
@@ -10,12 +11,12 @@
     group: '{{ drs_user }}'
     home: "{{drs_home_dir|default(omit)}}"
     groups: sudo
-    shell: /bin/bash
+    uid: "{{drs_uid|default(omit)}}"
 
 - name: Adding SSH keys
   authorized_key:
     user: '{{ drs_user }}'
-    state: present
+    state: "{{ r_authorized_key_remove | ternary('absent', 'present') }}"
     key: '{{ item }}'
   with_file:
     - '{{drs_pub_key_file}}'
