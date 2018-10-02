@@ -36,10 +36,10 @@
 - name: Disable IPv6 with sysctl
   sysctl: name={{ item.key }} value={{item.value}} state=present
   with_dict:
-    net.ipv6.conf.all.disable_ipv6: 1
-    net.ipv6.conf.default.disable_ipv6: 1
+    net.ipv6.conf.all.disable_ipv6: "{{ ipv6_disable_flag }}"
+    net.ipv6.conf.default.disable_ipv6: "{{ ipv6_disable_flag }}"
     net.ipv6.conf.lo.disable_ipv6: 0
-  when: 'drs_disable_ipv6 is defined and drs_disable_ipv6 == True'
+  tags: ['ipv6']
 
 - name: Seting timezone to UTC
   timezone:

@@ -1,0 +1,2 @@
+---
+ipv6_disable_flag: "{{ (drs_disable_ipv6 is defined and drs_disable_ipv6 == True) | ternary(1, 0) }}"
