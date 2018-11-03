@@ -10,6 +10,7 @@
     password: '{{ drs_pass|default(omit) }}'
     group: '{{ drs_user }}'
     home: "{{drs_home_dir|default(omit)}}"
+    shell: /bin/bash
     groups: sudo
     uid: "{{drs_uid|default(omit)}}"
 
