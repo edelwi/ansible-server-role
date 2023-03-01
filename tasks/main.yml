@@ -5,7 +5,7 @@
     name:
       - git
       - sudo
-      - python-pip
+#      - python-pip
       - python-pkg-resources
       - python-setuptools
       - gzip
